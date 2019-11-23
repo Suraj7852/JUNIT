@@ -6,6 +6,7 @@ public class UserRegistration
     private String firstName="^[A-Z][a-z]{3,}";
     private String lastName="^[A-Z][a-z]{3,}";
     private String email="(\\w+)([+_-.]\\w+)?[@][a-zA-Z]+([.][a-z]{2,3})([.][a-z]{2})?$";
+    private String mobileNumber="^[0-9]{2}([ ])?[6-9]{10}";
     public boolean validate_First_Name(String firstName) {
         Pattern firstNamePattern = Pattern.compile("^[A-Z]{1}[a-z]{2,}$");
         Matcher match = firstNamePattern.matcher(firstName);
@@ -27,6 +28,15 @@ public class UserRegistration
     public boolean validate_Email(String email) {
         Pattern emailPattern = Pattern.compile("^(\\w+)([+,_,-,.]\\w+)?[@][a-zA-Z]+([.][a-z]{2,3})([.][a-z]{2})?$");
         Matcher match = emailPattern.matcher(email);
+        if(match.matches())
+            return true;
+        else
+            return false;
+    }
+
+    public boolean validate_MobileNumber(String mobileNumber) {
+        Pattern mobilePattern = Pattern.compile("^[0-9]{2}[ ]{1}[0-9]{10}");
+        Matcher match = mobilePattern.matcher(mobileNumber);
         if(match.matches())
             return true;
         else
